@@ -1,0 +1,40 @@
+Before anything else , just download havoc from kali epo , works best 
+and then you could to go  following this script 
+
+Put this dir under x86_64-w64-mingw32-cross /usr/x86_64-w64-mingw32-cross/bin/x86_64-w64-mingw32-gcc
+
+and put this dir under    i686-w64-mingw32-cross /usr/i686-w64-mingw32-cross/bin/i686-w64-mingw32-gcc
+
+
+sudo apt install -y git build-essential apt-utils cmake libfontconfig1 libglu1-mesa-dev libgtest-dev libspdlog-dev libboost-all-dev libncurses5-dev libgdbm-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev libbz2-dev mesa-common-dev qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools libqt5websockets5 libqt5websockets5-dev qtdeclarative5-dev golang-go qtbase5-dev libqt5websockets5-dev python3-dev libboost-all-dev mingw-w64 nasm
+
+Building the Teamserver
+
+Install additional Go dependencies:
+
+# Install musl Compiler & Build Binary (From Havoc Root Directory)
+make ts-build
+
+Building the Client
+
+Now that we successfully compiled the teamserver we now should install the dependencies for the Client and compile it.
+
+Build and Run:
+
+# Build the client Binary (From Havoc Root Directory)
+make client-build
+
+
+just download thes files and put them in two diffrent places :
+First path will be in data ,as it written here , second it will be at :
+/usr
+(just copy what inside the data dir both of i686-w64-mingw32-cross  x86_64-w64-mingw32-cross  to usr , that's it ) 
+
+wget https://musl.cc/x86_64-w64-mingw32-cross.tgz -q -O /tmp/mingw-musl-64.tgz	tar zxf /tmp/mingw-musl-64.tgz -C data
+wget https://musl.cc/i686-w64-mingw32-cross.tgz -q -O /tmp/mingw-musl-32.tgz 	tar zxf /tmp/mingw-musl-32.tgz -C data
+
+
+you can tweak a litle bit in the profiles , profile dir 
+
+do not forget this app is vulnerable to CVE-2024-41570 , the link will be : https://github.com/sebr-dev/Havoc-C2-SSRF-to-RCE
+
